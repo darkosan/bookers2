@@ -1,8 +1,12 @@
-<h2>タイトル</h2>
-<p><%= @book.title %></p>
+<div>
+  <%= image_tag @book.get_image %>
 
-<h2>本文</h2>
-<p><%= @book.opinion %></p>
+<p>Title : <%= @book.title %></p>
+<p>Opinion : <%= @book.opinion %></p>
+<p>投稿ユーザー画像：<%= image_tag @post_image.user.get_profile_image(100,100) %></p>
+<p>Name：<%= @book.user.name %></p>
 
-<%= link_to "Edit", edit_book_path(@book.id) %>
-<%= link_to "Destroy",book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
+<% if @post_image.user == current_user %>
+ %= link_to "Edit", edit_book_path(@book.id) %>
+ <%= link_to "Destroy",book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
+<% end %>
