@@ -1,14 +1,14 @@
-<h1>Books</h1>
+<h1>Book detail</h1>
 
 <% @books.each do |book| %>
   <div>
     <%= link_to book_path(book.id) do %>
-      <%= image_tag post_image.get_image %>
+      <%= image_tag book.get_image %>
     <% end %>
-    
+
     <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
+    <p>Name：<%= book.user.name %></p>
     <p>Title：<%= book.title %></p>
     <p>Opinion：<%= book.opinion %></p>
-    <p>Name：<%= book.user.name %></p>
   </div>
 <% end %>

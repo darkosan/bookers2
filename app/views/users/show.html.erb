@@ -1,19 +1,23 @@
-<div>
+<div class="profile-container">
+
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
-  <% if @user == current_user.id %>
+
+  <% if @user.id == current_user.id %>
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
 </div>
 
-<% @books.each do |post_image| %>
+<% @books.each do |book| %>
 <div>
-  <%= link_to bool_path(book.id) do %>
+  <%= link_to book_path(book.id) do %>
     <%= image_tag book.get_image %>
   <% end %>
-  <p>Title : <%= @book.title %></p>
-  <p>Opinion : <%= @book.opinion %></p>
-  <p>投稿ユーザー画像：<%= image_tag 'profile_image.jpg' %></p>
-  <p>Name：<%= @book.user.name %></p>
+  <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
+  <p>Title：<%= book.title %></p>
+  <p>Opinion：<%= book.opinion %></p>
+  <p>ユーザーネーム：<%= book.user.name %></p>
 </div>
 <% end %>
+
+<%= render 'books', books: @books %>
