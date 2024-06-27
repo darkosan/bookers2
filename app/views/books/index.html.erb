@@ -22,15 +22,16 @@
 
 
 <h1>Books</h1>
-
-<% @books.each do |book| %>
+ <% @books.each do |book| %>
   <div>
     <%= link_to book_path(book.id) do %>
     <% end %>
-
-    <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
-    <p>Name：<%= book.user.name %></p>
-    <p>Title：<%= book.title %></p>
-    <p>Opinion：<%= book.opinion %></p>
+    <tr>
+     <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+     <p>Name：<%= book.user.name %></p>
+     <td>Title：<%= book.title %></td>
+     <td>Opinion：<%= book.opinion %></td>
+     <td><%= link_to 'Edit', edit_book_path(book) %></td>
+     <td><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
   </div>
 <% end %>
