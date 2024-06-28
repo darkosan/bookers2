@@ -18,38 +18,30 @@
           <a class="navbar-brand" href="/">
             <span>Bookers</span>
           </a>
-          <button>
-
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="ture" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse">
-            <ul class=>
-
-
-
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to books_path do %>
-         <i class="fa-solid fa-users"></i>Home
-         <% end %>
-      </li>
-      <li>
-      <%= link_to 'Books', user_path(current_user.id) %>
-      </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "Log_in", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "Sign_up", new_user_registration_path %>
-      </li>
-    <% end %>
-    </ul>
-    </div>
-     </div>
-    </nav>
+          <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
+            <ul class="navbar-nav ml-auto">
+             <li>
+              <%= link_to books_path do %>
+              <i class="fa-solid fa-home"></i>Home
+              <% end %>
+             </li>
+             <li>
+              <%= link_to "/users" do %>
+              <i class="fa-solid fa-user"></i>Users
+              <% end %>
+             <!-- Booksを作成する-->
+             <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa-solid fa-sign-out-alt"></i>Log out
+              <% end %>
+             </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
     <%= yield %>
   </body>
