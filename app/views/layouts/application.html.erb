@@ -23,6 +23,7 @@
           </button>
           <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
             <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
              <li>
               <%= link_to books_path do %>
               <i class="fa-solid fa-home"></i>Home
@@ -38,6 +39,24 @@
               <i class="fa-solid fa-sign-out-alt"></i>Log out
               <% end %>
              </li>
+            <% else %>
+             <li>
+              <%= link_to books_path do %>
+              <i class="fa-solid fa-home"></i>Home
+              <% end %>
+             </li>
+             <!-- aboutを作成する -->
+             <li>
+              <%= link_to new_user_registration_path do %>
+              <i class="fa-solid fa-user-plus"></i>Sign_up
+              <% end %>
+             </li>
+             <li>
+              <%= link_to new_user_session_path do %>
+              <i class="fa-solid fa-sign-in-alt"></i>Log_in
+              <% end %>
+             </li>
+            <% end %>
             </ul>
           </div>
         </div>

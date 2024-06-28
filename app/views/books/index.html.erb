@@ -1,3 +1,14 @@
+<div class="profile-container">
+
+  <h1><%= @user.name %></h1>
+  <%= image_tag @user.get_profile_image %>
+
+  <% if @user.id == current_user.id %>
+    <p><%= link_to "Update User", edit_user_path(@user) %></p>
+  <% end %>
+</div>
+
+
 <h1>New book</h1>
 <% if @book.errors.any? %>
   <%= @book.errors.count %>件のエラーが発生しました
@@ -33,5 +44,6 @@
      <td>Opinion：<%= book.opinion %></td>
      <td><%= link_to 'Edit', edit_book_path(book) %></td>
      <td><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+    </tr>
   </div>
 <% end %>
