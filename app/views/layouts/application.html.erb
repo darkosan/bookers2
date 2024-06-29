@@ -25,7 +25,7 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
              <li>
-              <%= link_to books_path do %>
+              <%= link_to users_path do %>
               <i class="fa-solid fa-home"></i>Home
               <% end %>
              </li>
@@ -33,7 +33,11 @@
               <%= link_to "/users" do %>
               <i class="fa-solid fa-user"></i>Users
               <% end %>
-             <!-- Booksを作成する-->
+             <li>
+               <%= link_to "/books" do %>
+               <i class="fa-solid fa-book-open"></i>Books
+               <% end %>
+             </li>
              <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
               <i class="fa-solid fa-sign-out-alt"></i>Log out
@@ -41,7 +45,7 @@
              </li>
             <% else %>
              <li>
-              <%= link_to books_path do %>
+              <%= link_to users_path do %>
               <i class="fa-solid fa-home"></i>Home
               <% end %>
              </li>

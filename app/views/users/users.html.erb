@@ -30,20 +30,11 @@
 
 
 
-
-
-<h1>Books</h1>
- <% @books.each do |book| %>
-  <div>
-    <%= link_to book_path(book.id) do %>
-    <% end %>
-    <tr>
-     <td><%= image_tag book.user.get_profile_image %></td>
-     <p>Name：<%= book.user.name %></p>
-     <td>Title：<%= book.title %></td>
-     <td>Opinion：<%= book.opinion %></td>
-     <td><%= link_to 'Edit', edit_book_path(book) %></td>
-     <td><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
-    </tr>
-  </div>
+<h1>Users</h1>
+<%= link_to user_path(user_id) do %>
 <% end %>
+<%= image_tag @user.get_profile_image %>
+ <%= @user.name %>
+ <% if @user.id == current_user.id %>
+  <p><%= link_to "Update User", edit_user_path(@user) %></p>
+ <% end %>

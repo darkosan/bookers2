@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
    before_action :is_matching_login_user, only: [:edit, :update]
 
+  def index
+   @book = Book.new
+   @books = Book.all
+   @user = User.new
+  end
+
   def show
     @user = User.find(params[:id])
     @books = @user.books
@@ -14,6 +20,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(book_params)
     redirect_to user_path(@user.id)
+  end
+
+  def users_index
+    @users = User.all
   end
 
 
