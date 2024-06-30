@@ -33,8 +33,8 @@
 
 
 <h1>Books</h1>
- <% @books.each do |book| %>
-  <div>
+  <% @books.each do |book| %>
+   <div>
     <%= link_to book_path(book.id) do %>
     <% end %>
     <tr>
@@ -45,5 +45,5 @@
      <td><%= link_to 'Edit', edit_book_path(book) %></td>
      <td><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
     </tr>
-  </div>
+   </div>
 <% end %>
