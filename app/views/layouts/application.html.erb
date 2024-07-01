@@ -25,7 +25,7 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
              <li>
-              <%= link_to users_path do %>
+              <%= link_to root_path do %>
               <i class="fa-solid fa-home"></i>Home
               <% end %>
              </li>
@@ -56,12 +56,12 @@
              </li>
              <li>
               <%= link_to new_user_registration_path do %>
-              <i class="fa-solid fa-user-plus"></i>Sign_up
+              <i class="fa-solid fa-user-plus"></i>Sign up
               <% end %>
              </li>
              <li>
               <%= link_to new_user_session_path do %>
-              <i class="fa-solid fa-sign-in-alt"></i>Log_in
+              <i class="fa-solid fa-sign-in-alt"></i>Log in
               <% end %>
              </li>
             <% end %>
@@ -70,7 +70,7 @@
         </div>
       </nav>
     </header>
-    
+
     <main>
      <%= yield %>
     </main>

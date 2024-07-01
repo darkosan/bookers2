@@ -8,14 +8,14 @@
 　  <%= flash[:alert] %>
 　 </p>
   <% end %>
-  
+
 <%= form_with model: @book do |f| %>
 
   <h4>タイトル</h4>
   <%= f.text_field :title %>
 
   <h4>本文</h4>
-  <%= f.text_area :opinion%>
+  <%= f.text_area :body%>
 
   <%= f.submit 'Update Book' %>
 
