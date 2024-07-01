@@ -13,13 +13,20 @@ class UsersController < ApplicationController
   end
 
   def edit
+    is_matching_login_user
     @user = User.find(params[:id])
   end
 
   def update
+    is_matching_login_user
     @user = User.find(params[:id])
-    @user.update(book_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+     flash[:notice] = "successfully　updated"
+     redirect_to user_path(@user.id)
+    else
+      flash[:alert] = "Failed to create book: " + @book.errors.full_messages.join(", ")
+      render :index
+    end
   end
 
   def users_index
@@ -36,7 +43,7 @@ class UsersController < ApplicationController
   def is_matching_login_user
    user = User.find(params[:id])
    unless user.id == current_user.id
-    redirect_to bookes_path
+    redirect_to users_path
    end
   end
 end

@@ -1,5 +1,14 @@
 <h1>Editing Book</h1>
-
+  <% if flash[:notice] %>
+   <p id="notice">
+    <%= flash[:notice] %>
+   </p>
+  <% elsif flash[:alert] %>
+　 <p id="alert">
+　  <%= flash[:alert] %>
+　 </p>
+  <% end %>
+  
 <%= form_with model: @book do |f| %>
 
   <h4>タイトル</h4>

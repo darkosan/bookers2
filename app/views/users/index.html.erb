@@ -1,49 +1,31 @@
-<h1>User info</h1>
- <div class="profile-container">
-  <%= image_tag @user.get_profile_image %>
-  <%= @user.name %>
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "Update User", edit_user_path(@user) %></p>
-  <% end %>
-  <p>introduction</p>
+<div class="container">
+ <div class="row">
+  <%= render 'books/book', books: @books %>
  </div>
-
-
-<h1>New book</h1>
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @book do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Opinion</h4>
-  <%= f.text_area :opinion %>
-
-  <%= f.submit 'Create Book' %>
-<% end %>
-
-
-
-
-
-<h1>Books</h1>
-  <% @books.each do |book| %>
-   <div>
-    <%= link_to book_path(book.id) do %>
-    <% end %>
-    <tr>
-     <td><%= image_tag book.user.get_profile_image %></td>
-     <p>Name：<%= book.user.name %></p>
-     <td>Title：<%= book.title %></td>
-     <td>Opinion：<%= book.opinion %></td>
-     <td><%= link_to 'Edit', edit_book_path(book) %></td>
-     <td><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
-    </tr>
-   </div>
-<% end %>
+ <div class="row">]
+  <div class="col-md-9">
+   <h1>Books</h1>
+   <table class="table">
+    <thead>
+     <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+     </tr>
+    </thead>
+    <tbody>
+     <% @books.each do |book| %>
+      <tr>
+       <td><%= image_tag book.user.get_profile_image %></td>
+       <td><%= book.title %></td>
+       <td><%= book.opinion %></td>
+       <td><%= link_to 'Edit', edit_book_path(book) %></td>
+       <td><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+      </tr>
+     <% end %>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</div>
