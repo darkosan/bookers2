@@ -25,7 +25,7 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
              <li>
-              <%= link_to root_path do %>
+              <%= link_to user_path(current_user.id.to_s) do %>
               <i class="fa-solid fa-home"></i>Home
               <% end %>
              </li>
@@ -45,7 +45,7 @@
              </li>
             <% else %>
              <li>
-              <%= link_to users_path do %>
+              <%= link_to "/" do %>
               <i class="fa-solid fa-home"></i>Home
               <% end %>
              </li>
