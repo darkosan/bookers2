@@ -24,7 +24,7 @@ class UsersController < ApplicationController
      flash[:notice] = "successfully　updated"
      redirect_to user_path(@user.id)
     else
-      flash[:alert] = "Failed to create book: " + @book.errors.full_messages.join(", ")
+      flash[:alert] = "Failed to update user: " + @user.errors.full_messages.join(", ")
       render :index
     end
   end
