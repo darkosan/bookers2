@@ -27,14 +27,3 @@
 
   <%= f.submit 'Create Book' %>
 <% end %>
-
-
-
-<h1>Users</h1>
-<%= link_to user_path(user_id) do %>
-<% end %>
-<%= image_tag @user.get_profile_image %>
- <%= @user.name %>
- <% if @user.id == current_user.id %>
-  <p><%= link_to "Update User", edit_user_path(@user) %></p>
- <% end %>
