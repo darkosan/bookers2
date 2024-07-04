@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<% if flash[:notice] %>
+  <p id="notice">
+  <%= flash[:notice] %>
+  </p>
+<% end %>
 <html class="frontawesome-i2svg-active fontawesome-i2svg-complete">
 <p id="notice"></p>
 <div class="container">
