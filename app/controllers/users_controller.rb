@@ -2,8 +2,9 @@ class UsersController < ApplicationController
    before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
-   @user = User.new
-   @user = User.all
+    @book = Book.new
+    @user = User.new
+    @user = User.all
   end
 
   def show
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
      redirect_to user_path(@user.id)
     else
       flash[:alert] = "Failed to update user: " + @user.errors.full_messages.join(", ")
-      render :index
+      render :edit
     end
   end
 

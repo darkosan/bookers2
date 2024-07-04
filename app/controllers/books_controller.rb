@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def new
   end
@@ -37,8 +38,8 @@ class BooksController < ApplicationController
      redirect_to book_path(current_user.id)
     else
       @books = Book.all
-      flash[:alert] = "Failed to create book: " + @book.errors.full_messages.join(", ")
-      render :index
+      flash[:alert] = "error to create book: " + @book.errors.full_messages.join(", ")
+      render :edit
     end
   end
 
@@ -52,6 +53,14 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:image,:title,:body)
+  end
+
+  def is_matching_login_user
+    book = Book.find(params[:id])
+    user = book.user
+    unless user.id == current_user.id
+      redirect_to books_path
+    end
   end
 
 end
